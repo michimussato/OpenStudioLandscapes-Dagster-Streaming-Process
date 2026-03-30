@@ -27,7 +27,7 @@ from dagster import (
     AssetExecutionContext
 )
 
-from OpenStudioLandscapes.Dagster.streaming_process import submit_cmds
+from OpenStudioLandscapes.Dagster_Streaming_Process import submit_cmds
 
 dagster_execution_context: Union[OpExecutionContext, AssetExecutionContext]
 tasks: List[List[str]] = [
