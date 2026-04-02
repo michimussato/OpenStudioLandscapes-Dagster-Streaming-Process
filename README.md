@@ -40,7 +40,7 @@ from dagster import (
     AssetExecutionContext
 )
 
-from OpenStudioLandscapes.Dagster.StreamingProcess import submit_cmds
+from OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess import submit_cmds
 
 dagster_execution_context: Union[OpExecutionContext, AssetExecutionContext]
 tasks: List[List[str]] = [

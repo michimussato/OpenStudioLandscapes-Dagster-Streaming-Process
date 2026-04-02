@@ -27,7 +27,7 @@ license-files = [
 maintainers = [
     { email = "michimussato@gmail.com", name = "Michael Mussato" },
 ]
-name = "OpenStudioLandscapes.Dagster.StreamingProcess"
+name = "OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess"
 requires-python = ">=3.11"
 
 [project.readme]
@@ -35,19 +35,19 @@ content-type = "text/markdown; charset=UTF-8"
 file = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/michimussato/OpenStudioLandscapes-Dagster-StreamingProcess"
+Homepage = "https://github.com/michimussato/OpenStudioLandscapes-DagsterCodeLocation-StreamingProcess"
 
 [tool.setuptools]
 include-package-data = true
 #packages = [
-#    "OpenStudioLandscapes.Dagster.StreamingProcess",
+#    "OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess",
 #]
 platforms = [
     "Linux",
 ]
 
 #[tool.setuptools.package-dir]
-#"OpenStudioLandscapes.Dagster.StreamingProcess" = "src/OpenStudioLandscapes/Dagster/StreamingProcess"
+#"OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess" = "src/OpenStudioLandscapes/Dagster/StreamingProcess"
 
 [tool.setuptools.packages.find]
 exclude = [
@@ -57,5 +57,5 @@ namespaces = true
 where = [
     "src/",
 ]
-#include = ["OpenStudioLandscapes.Dagster.StreamingProcess"]
-include = ["StreamingProcess"]
+#include = ["OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess"]
+include = ["OpenStudioLandscapes.DagsterCodeLocation.*"]
