@@ -2,7 +2,7 @@ from typing import Union, List
 
 from dagster import AssetExecutionContext, OpExecutionContext, get_dagster_logger
 
-from OpenStudioLandscapes.Dagster_Streaming_Process.thread import _process_cmds
+from OpenStudioLandscapes.Dagster.StreamingProcess.thread import _process_cmds
 
 LOGGER = get_dagster_logger(__name__)
 

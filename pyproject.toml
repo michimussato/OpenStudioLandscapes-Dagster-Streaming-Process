@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python",
 ]
 dependencies = [
-    "dagster-webserver==1.9.11",
+    "dagster==1.9.11",
 ]
 description = "Run `subprocess` in Dagster and live stream output to Dagster."
 dynamic = [
@@ -27,7 +27,7 @@ license-files = [
 maintainers = [
     { email = "michimussato@gmail.com", name = "Michael Mussato" },
 ]
-name = "OpenStudioLandscapes-Dagster-Streaming-Process"
+name = "OpenStudioLandscapes.Dagster.StreamingProcess"
 requires-python = ">=3.11"
 
 [project.readme]
@@ -35,13 +35,19 @@ content-type = "text/markdown; charset=UTF-8"
 file = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/michimussato/OpenStudioLandscapes-Dagster-Streaming-Process"
+Homepage = "https://github.com/michimussato/OpenStudioLandscapes-Dagster-StreamingProcess"
 
 [tool.setuptools]
 include-package-data = true
+#packages = [
+#    "OpenStudioLandscapes.Dagster.StreamingProcess",
+#]
 platforms = [
     "Linux",
 ]
+
+#[tool.setuptools.package-dir]
+#"OpenStudioLandscapes.Dagster.StreamingProcess" = "src/OpenStudioLandscapes/Dagster/StreamingProcess"
 
 [tool.setuptools.packages.find]
 exclude = [
@@ -49,5 +55,7 @@ exclude = [
 ]
 namespaces = true
 where = [
-    "src",
+    "src/",
 ]
+#include = ["OpenStudioLandscapes.Dagster.StreamingProcess"]
+include = ["StreamingProcess"]

@@ -3,14 +3,27 @@
 ---
 
 <!-- TOC -->
-* [OpenStudioLandscapes-Dagster-Streaming-Process](#openstudiolandscapes-dagster-streaming-process)
+* [OpenStudioLandscapes-Dagster-StreamingProcess](#openstudiolandscapes-dagster-streamingprocess)
   * [Brief](#brief)
   * [Usage](#usage)
 <!-- TOC -->
 
 ---
 
-# OpenStudioLandscapes-Dagster-Streaming-Process
+# OpenStudioLandscapes-Dagster-StreamingProcess
+
+> [!NOTE]
+> 
+> This package was scaffolded with `dagster==1.9.11`
+> 
+> ```shell
+> dagster project scaffold --name OpenStudioLandscapes-StreamingProcess
+> git -C ./OpenStudioLandscapes-StreamingProcess init --initial-branch main
+> git -C ./OpenStudioLandscapes-StreamingProcess remote add origin https://github.com/michimussato/OpenStudioLandscapes-Dagster-StreamingProcess.git
+> git -C ./OpenStudioLandscapes-StreamingProcess add *
+> git -C ./OpenStudioLandscapes-StreamingProcess commit -a -m "initial commit"
+> git -C ./OpenStudioLandscapes-StreamingProcess push -u origin main
+> ```
 
 ## Brief
 
@@ -27,7 +40,7 @@ from dagster import (
     AssetExecutionContext
 )
 
-from OpenStudioLandscapes.Dagster_Streaming_Process import submit_cmds
+from OpenStudioLandscapes.Dagster.StreamingProcess import submit_cmds
 
 dagster_execution_context: Union[OpExecutionContext, AssetExecutionContext]
 tasks: List[List[str]] = [
