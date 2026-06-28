@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Union, List, Dict
 
 from dagster import AssetExecutionContext, OpExecutionContext, get_dagster_logger
 
@@ -9,7 +9,7 @@ LOGGER = get_dagster_logger(__name__)
 
 def submit_cmds(
     context: Union[OpExecutionContext, AssetExecutionContext],
-    cmds: List[List[str]],
+    cmds: List[Dict[str, Union[List[str], Dict]]],
 ) -> List[str]:
     """
     Args:
