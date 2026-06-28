@@ -2,7 +2,7 @@ import threading
 import queue
 import subprocess
 import shlex
-from typing import Any, Generator, Union, List
+from typing import Any, Generator, Union, List, Dict
 
 from dagster import AssetExecutionContext, OpExecutionContext, get_dagster_logger
 
@@ -26,6 +26,7 @@ class _OutputReader(threading.Thread):
 
 def _execute_in_threads(
     command: str,
+    env: Dict,
 ) -> Generator[str | Any, None, None]:
     """
     Usage
@@ -35,11 +36,15 @@ def _execute_in_threads(
     :return:
     """
 
+    # if env is None:
+    #     env = {}
+
     process = subprocess.Popen(
         command,
         shell=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        env=env,
     )
 
     stdout_queue = queue.Queue()
@@ -74,14 +79,35 @@ def _execute_in_threads(
 
 def _process_cmds(
     context: Union[OpExecutionContext, AssetExecutionContext],
-    cmds: List[List[str]],
+    cmds: List[Dict[str, Union[List[str], Dict]]],
 ) -> Generator[str | Any, Any, None]:
 
+    """
+    cmds = [
+        [cmd1],
+        [cmd2],
+    ]
+
+    cmds = [
+        {
+            "cmd": [cmd1],
+            "env": {},
+        },
+        {
+            "cmd": [cmd2],
+            "env": {},
+        },
+    ]
+    """
+
+    cmd: Dict[str, Union[List[str], Dict]]
     for cmd in cmds:
 
-        context.log.info(f"Processing command: \"{' '.join(cmd)}\"")
+        context.log.info(f"Processing command: \"{' '.join(cmd['cmd'])}\"")
+        context.log.info(f"Environment: \"{' '.join(cmd['env'])}\"")
 
         for s in _execute_in_threads(
-            command=shlex.join(cmd),
+            command=shlex.join(cmd["cmd"]),
+            env=cmd["env"],
         ):
             yield s
