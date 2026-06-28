@@ -100,6 +100,8 @@ def _process_cmds(
     ]
     """
 
+    LOGGER.debug(f"Received cmds: {cmds}")
+
     cmd: Dict[str, Union[List[str], Dict]]
     for cmd in cmds:
 
