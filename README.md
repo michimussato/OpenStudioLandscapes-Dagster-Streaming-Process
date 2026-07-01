@@ -33,7 +33,7 @@ A package to run a `subprocess` child process with output collection
 ## Usage
 
 ```python
-from typing import Any, Generator, List, Union
+from typing import Any, Generator, List, Union, Dict
 
 from dagster import (
     OpExecutionContext,
@@ -43,12 +43,15 @@ from dagster import (
 from OpenStudioLandscapes.DagsterCodeLocation.StreamingProcess import submit_cmds
 
 dagster_execution_context: Union[OpExecutionContext, AssetExecutionContext]
-tasks: List[List[str]] = [
-  [
-    "ls",
-    "-al",
-    "/dir/1",
-  ],
+tasks: List[Dict[str, Union[List[str], Dict]]] = [
+  {
+    "cmd": [
+      "ls",
+      "-al",
+      "/dir/1",
+    ],
+    "env": {},
+  },
 ]
 
 log_records: List[str] = submit_cmds(
