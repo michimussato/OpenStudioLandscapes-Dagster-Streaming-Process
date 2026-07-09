@@ -22,6 +22,10 @@ def submit_cmds(
 
     records = []
 
+    # Todo:
+    #  - [ ] in case of exception, return `records` until that point
+    #        instead of cashing and not returning anything
+
     for record in _process_cmds(
         context=context,
         cmds=cmds,
